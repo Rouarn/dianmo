@@ -48,7 +48,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStartOverlay"
-        style="@style/Widget.MemTool.Button"
+        style="@style/Widget.DianMo.Button"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="启动悬浮窗"

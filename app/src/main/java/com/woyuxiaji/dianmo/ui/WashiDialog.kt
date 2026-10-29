@@ -29,7 +29,7 @@ class WashiDialog(
     inputValue: String? = null,
     inputType: Int = android.text.InputType.TYPE_CLASS_TEXT,
     overlayType: Int = 0,
-) : Dialog(context, R.style.Theme_MemTool_Dialog) {
+) : Dialog(context, R.style.Theme_DianMo_Dialog) {
 
     private val input: EditText
 

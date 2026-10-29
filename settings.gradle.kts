@@ -23,5 +23,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MemTool"
+rootProject.name = "DianMo"
 include(":app")

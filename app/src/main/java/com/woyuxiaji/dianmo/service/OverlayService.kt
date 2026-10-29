@@ -111,7 +111,7 @@ class OverlayService : Service() {
     override fun onCreate() {
         super.onCreate()
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
-        themedContext = ContextThemeWrapper(this, R.style.Theme_MemTool)
+        themedContext = ContextThemeWrapper(this, R.style.Theme_DianMo)
 
         startForegroundCompat()
         setupBall()
@@ -427,7 +427,7 @@ class OverlayService : Service() {
             try {
                 val list = ProcUtils.listProcesses(packageManager)
                 android.util.Log.d(
-                    "MemToolDebug",
+                    "DianMoDebug",
                     "total=${list.size}, withPkg=${list.count { it.packageName != null }}, " +
                         "userApps=${list.count { it.isUserApp }}"
                 )
@@ -444,7 +444,7 @@ class OverlayService : Service() {
                             .thenBy { it.displayName.lowercase() }
                     )
                 }
-                android.util.Log.d("MemToolDebug", "filtered=${allProcesses.size}")
+                android.util.Log.d("DianMoDebug", "filtered=${allProcesses.size}")
                 filterProcesses()
                 if (::tvProcLoading.isInitialized) {
                     if (allProcesses.isEmpty()) {
@@ -455,7 +455,7 @@ class OverlayService : Service() {
                     }
                 }
             } catch (e: Exception) {
-                android.util.Log.e("MemToolDebug", "load failed", e)
+                android.util.Log.e("DianMoDebug", "load failed", e)
                 if (::tvProcLoading.isInitialized) {
                     tvProcLoading.text = "读取失败：${e.message}"
                     tvProcLoading.visibility = View.VISIBLE
@@ -476,7 +476,7 @@ class OverlayService : Service() {
             }
         }
         android.util.Log.d(
-            "MemToolDebug",
+            "DianMoDebug",
             "filter keyword='$keyword' in=${allProcesses.size} out=${filtered.size} " +
                 "adapter=${processAdapter?.size}"
         )
@@ -513,7 +513,7 @@ class OverlayService : Service() {
         )
         digitMap.forEach { (id, ch) ->
             root.findViewById<View>(id).setOnClickListener {
-                android.util.Log.d("MemToolDebug", "key=$ch active=${activeEdit?.id}")
+                android.util.Log.d("DianMoDebug", "key=$ch active=${activeEdit?.id}")
                 activeEdit?.append(ch)
             }
         }
@@ -1229,7 +1229,7 @@ class OverlayService : Service() {
     }
 
     private fun refreshValues() {
-        android.util.Log.d("MemToolDebug", "refreshValues clicked")
+        android.util.Log.d("DianMoDebug", "refreshValues clicked")
         if (busy) {
             toast("正在处理中，请稍候…")
             return
@@ -1270,7 +1270,7 @@ class OverlayService : Service() {
                 ScanSession.ensure(this@OverlayService)
                     .readAll(target.pid, type, hits.map { it.address })
             } catch (e: Exception) {
-                android.util.Log.e("MemToolDebug", "refresh failed", e)
+                android.util.Log.e("DianMoDebug", "refresh failed", e)
                 emptyList()
             }
             ScanSession.hits = refreshed

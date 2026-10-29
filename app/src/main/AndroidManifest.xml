@@ -14,13 +14,13 @@
         tools:ignore="QueryAllPackagesPermission" />
 
     <application
-        android:name=".MemToolApp"
+        android:name=".DianMoApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MemTool">
+        android:theme="@style/Theme.DianMo">
 
         <activity
             android:name=".MainActivity"

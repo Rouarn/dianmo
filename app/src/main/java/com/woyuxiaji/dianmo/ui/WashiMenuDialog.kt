@@ -21,7 +21,7 @@ class WashiMenuDialog(
     onSelect: (Int) -> Unit,
     subtitle: String? = null,
     overlayType: Int = 0,
-) : Dialog(context, R.style.Theme_MemTool_Dialog) {
+) : Dialog(context, R.style.Theme_DianMo_Dialog) {
 
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)

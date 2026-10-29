@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MemTool" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.DianMo" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/vermilion</item>
         <item name="colorOnPrimary">#FFF7F0E2</item>
         <item name="colorPrimaryContainer">@color/vermilion_dark</item>
@@ -17,7 +17,7 @@
     </style>
 
     <!-- 和纸弹窗 -->
-    <style name="Theme.MemTool.Dialog" parent="Theme.Material3.Light.Dialog.Alert">
+    <style name="Theme.DianMo.Dialog" parent="Theme.Material3.Light.Dialog.Alert">
         <item name="android:fontFamily">serif</item>
         <item name="android:windowBackground">@drawable/bg_modal</item>
         <item name="colorPrimary">@color/vermilion</item>
@@ -64,7 +64,7 @@
         <item name="android:textSize">13sp</item>
     </style>
 
-    <style name="Widget.MemTool.Button" parent="Widget.Material3.Button">
+    <style name="Widget.DianMo.Button" parent="Widget.Material3.Button">
         <item name="cornerRadius">2dp</item>
     </style>
 </resources>

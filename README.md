@@ -1,4 +1,4 @@
-# MemTool
+# 点墨（DianMo）
 
 Android 单机游戏内存修改器（学习项目）。仅用于**本人拥有的离线单机游戏**，请勿用于联机游戏、内购绕过或任何商业作弊场景。
 
@@ -32,7 +32,7 @@ Android 单机游戏内存修改器（学习项目）。仅用于**本人拥有�
 ## 目录结构
 
 ```
-MemTool/
+DianMo/
 ├── app/src/main/
 │   ├── java/com/woyuxiaji/memtool/
 │   │   ├── MainActivity.kt          # 主界面与扫描流程
