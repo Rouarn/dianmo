@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">点墨</string>
+    <string name="root_status_unknown">Root: 检测中…</string>
+    <string name="root_status_ok">Root: 已授权</string>
+    <string name="root_status_fail">Root: 未授权</string>
+    <string name="select_process">选择目标进程</string>
+    <string name="no_process">未选择进程</string>
+    <string name="scan_type">数据类型</string>
+    <string name="value_hint">输入数值，例如 1000</string>
+    <string name="first_scan">首次扫描</string>
+    <string name="next_scan">再次扫描</string>
+    <string name="clear_results">清空</string>
+    <string name="result_count">命中 %1$d 个</string>
+    <string name="scanning">扫描中…</string>
+    <string name="edit_value">修改数值</string>
+    <string name="write_ok">写入成功</string>
+    <string name="write_fail">写入失败</string>
+    <string name="root_required">需要 Root 权限</string>
+    <string name="deploy_scanner">正在部署扫描器…</string>
+    <string name="scanner_ready">扫描器就绪</string>
+    <string name="tip_select_process">请先选择目标进程</string>
+    <string name="tip_input_value">请输入要搜索的数值</string>
+    <string name="tip_no_result">没有命中结果，请换一个数值或类型</string>
+</resources>

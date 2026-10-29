@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayMask"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/panelRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="2dp"
+        android:layout_marginVertical="2dp"
+        android:background="@drawable/bg_washi"
+        android:orientation="vertical">
+
+        <!-- 标题栏 -->
+        <LinearLayout
+            android:id="@+id/dragBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="6dp">
+
+            <TextView
+                android:id="@+id/sealMark"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_seal"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="点"
+                android:textColor="#FFF5EDDD"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGameName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:fontFamily="serif"
+                android:gravity="center_vertical"
+                android:letterSpacing="0.12"
+                android:singleLine="true"
+                android:text="点墨"
+                android:textColor="@color/ink"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvClose"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="✕"
+                android:textColor="@color/ink_secondary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/ink_line_strong" />
+
+        <!-- 目标行 -->
+        <LinearLayout
+            android:id="@+id/targetRow"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="目标"
+                android:textColor="@color/ink_secondary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tvTarget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:fontFamily="serif"
+                android:singleLine="true"
+                android:text="未选择"
+                android:textColor="@color/ink"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnPickProcess"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:background="@drawable/bg_stamp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:text="切换"
+                android:textColor="@color/vermilion"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ink_line" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- 搜索视图 -->
+            <LinearLayout
+                android:id="@+id/scanPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="12dp">
+
+                <!-- 搜索行 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/etValue"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_field"
+                        android:fontFamily="serif"
+                        android:hint="输入要搜索的数值"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:paddingHorizontal="10dp"
+                        android:textColor="@color/ink"
+                        android:textColorHint="@color/ink_tertiary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/btnFirst"
+                        android:layout_width="64dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_seal"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:letterSpacing="0.2"
+                        android:text="搜索"
+                        android:textColor="#FFF7F0E2"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- 类型 -->
+                <LinearLayout
+                    android:id="@+id/typeRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/type0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="整数"
+                        android:textColor="@color/vermilion"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/type1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="小数"
+                        android:textColor="@color/ink_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/type2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="长整数"
+                        android:textColor="@color/ink_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/type3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="高精小数"
+                        android:textColor="@color/ink_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnFuzzy"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="模糊"
+                        android:textColor="@color/ink_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/ink_line" />
+
+                <!-- 状态提示行（替代 Toast） -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:background="@drawable/bg_dot_red" />
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="serif"
+                        android:singleLine="true"
+                        android:text="就绪"
+                        android:textColor="@color/ink"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+
+                <!-- 结果操作栏 -->
+                <LinearLayout
+                    android:id="@+id/resultBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:id="@+id/cbSelectAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/vermilion"
+                        android:fontFamily="serif"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:text="全选"
+                        android:textColor="@color/ink_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tvResult"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:textColor="@color/vermilion"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnRefresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_inkline"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:paddingHorizontal="9dp"
+                        android:text="刷新"
+                        android:textColor="@color/ink"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/btnChain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_inkline"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:paddingHorizontal="9dp"
+                        android:text="指针"
+                        android:textColor="@color/ink"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/btnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_inkline"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:paddingHorizontal="9dp"
+                        android:text="保存"
+                        android:textColor="@color/ink"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/btnWriteAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_seal"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="修改"
+                        android:textColor="#FFF7F0E2"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHits"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvEmptyHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:lineSpacingExtra="6dp"
+                    android:text="输入游戏里的数值
+点「搜索」开始"
+                    android:textColor="@color/ink_tertiary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!-- 地址簿 -->
+            <LinearLayout
+                android:id="@+id/savedPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cbSavedAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/vermilion"
+                        android:fontFamily="serif"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:text="全选"
+                        android:textColor="@color/ink_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tvSavedCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:fontFamily="serif"
+                        android:textColor="@color/vermilion"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnSavedDelete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_inkline"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:paddingHorizontal="9dp"
+                        android:text="删除"
+                        android:textColor="@color/ink"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ink_line" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSaved"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:clipToPadding="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginVertical="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnSavedRefresh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_inkline"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="刷新"
+                        android:textColor="@color/ink"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnSavedEdit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/bg_seal"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="批量修改"
+                        android:textColor="#FFF7F0E2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnSavedBack"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_inkline"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="返回"
+                        android:textColor="@color/ink"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 进程列表 -->
+            <LinearLayout
+                android:id="@+id/processPicker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="12dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/etProcSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_field"
+                    android:fontFamily="serif"
+                    android:hint="查找应用名或包名"
+                    android:inputType="text"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/ink"
+                    android:textColorHint="@color/ink_tertiary"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/ink_line" />
+
+                <TextView
+                    android:id="@+id/tvProcLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:fontFamily="serif"
+                    android:gravity="center_vertical"
+                    android:text="正在读取进程列表…"
+                    android:textColor="@color/vermilion"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProcesses"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:clipToPadding="false" />
+
+                <TextView
+                    android:id="@+id/btnClosePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginVertical="4dp"
+                    android:background="@drawable/bg_inkline"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="返回"
+                    android:textColor="@color/ink"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="top|start"
+        android:background="@drawable/corner_tl" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="top|end"
+        android:background="@drawable/corner_tr" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="bottom|start"
+        android:background="@drawable/corner_bl" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="bottom|end"
+        android:background="@drawable/corner_br" />
+</FrameLayout>
+        <LinearLayout
+        android:id="@+id/writeRow"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:visibility="gone">
+
+        <TextView
+        android:id="@+id/tvWriteAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/ink_secondary"
+        android:textSize="10sp" />
+
+        <EditText
+        android:id="@+id/etWriteValue"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_field"
+        android:fontFamily="serif"
+        android:gravity="center_vertical"
+        android:hint="新数值"
+        android:inputType="numberDecimal|numberSigned"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/ink"
+        android:textSize="13sp" />
+
+        <TextView
+        android:id="@+id/btnWriteClose"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_stamp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="✕"
+        android:textColor="@color/vermilion"
+        android:textSize="13sp" />
+        </LinearLayout>
+
+
+        <include layout="@layout/key_panel" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/ink_line_strong" />
+
+        <!-- 底部栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/bg_seal"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:letterSpacing="0.08"
+                android:text="继续搜索"
+                android:textColor="#FFF7F0E2"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnClear"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_inkline"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="清空"
+                android:textColor="@color/ink"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnSpeed"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_inkline"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="变速"
+                android:textColor="@color/ink"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnSaved"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_inkline"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="地址簿"
+                android:textColor="@color/ink"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnHide"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_inkline"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="收起"
+                android:textColor="@color/ink_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

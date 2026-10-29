@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 和纸 · 墨 · 朱印 -->
+    <color name="paper">#FFEFE7D6</color>
+    <color name="paper_light">#FFF7F1E3</color>
+    <color name="paper_dim">#FFE5DBC6</color>
+    <color name="ink">#FF241F18</color>
+    <color name="ink_secondary">#FF6B6154</color>
+    <color name="ink_tertiary">#FF8A7F6E</color>
+    <color name="vermilion">#FFB23A2E</color>
+    <color name="vermilion_dark">#FF8F2A20</color>
+    <color name="ink_line">#52241F18</color>
+    <color name="ink_line_strong">#BF241F18</color>
+
+    <!-- 兼容旧引用（映射到新配色） -->
+    <color name="brand">@color/vermilion</color>
+    <color name="brand_dark">@color/vermilion_dark</color>
+    <color name="surface">@color/paper</color>
+    <color name="surface_card">@color/paper_light</color>
+    <color name="on_surface">@color/ink</color>
+    <color name="on_surface_secondary">@color/ink_secondary</color>
+    <color name="ok">#FF4A6B4A</color>
+    <color name="warn">#FFA8762A</color>
+    <color name="error">@color/vermilion</color>
+</resources>

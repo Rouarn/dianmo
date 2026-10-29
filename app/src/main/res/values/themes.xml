@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MemTool" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/vermilion</item>
+        <item name="colorOnPrimary">#FFF7F0E2</item>
+        <item name="colorPrimaryContainer">@color/vermilion_dark</item>
+        <item name="colorOnPrimaryContainer">#FFF7F0E2</item>
+        <item name="colorSecondary">@color/ok</item>
+        <item name="android:colorBackground">@color/paper</item>
+        <item name="colorSurface">@color/paper_light</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="android:statusBarColor">@color/paper</item>
+        <item name="android:navigationBarColor">@color/paper</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:windowBackground">@color/paper</item>
+    </style>
+
+    <!-- 和纸弹窗 -->
+    <style name="Theme.MemTool.Dialog" parent="Theme.Material3.Light.Dialog.Alert">
+        <item name="android:fontFamily">serif</item>
+        <item name="android:windowBackground">@drawable/bg_modal</item>
+        <item name="colorPrimary">@color/vermilion</item>
+        <item name="colorOnPrimary">#FFF7F0E2</item>
+        <item name="colorSurface">@color/paper</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="android:textColorPrimary">@color/ink</item>
+        <item name="android:backgroundDimAmount">0.55</item>
+    </style>
+
+    <style name="KeyButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">2dp</item>
+        <item name="android:background">@drawable/bg_key</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/key_text</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="KeyButtonFunc">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">2dp</item>
+        <item name="android:background">@drawable/bg_key</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/key_text</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="KeyButtonPrimary">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">2dp</item>
+        <item name="android:background">@drawable/bg_seal</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFF7F0E2</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Widget.MemTool.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">2dp</item>
+    </style>
+</resources>

@@ -1,0 +1,24 @@
+# 构建产物
+build/
+.gradle/
+app/build/
+app/release/
+*.apk
+*.aab
+
+# 签名与密码（绝对不能提交）
+keystore.properties
+*.jks
+*.keystore
+
+# 本地配置
+local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# native 扫描器产物需要随仓库提供（否则无 NDK 环境无法打包）
+# 如需重新生成：bash scripts/build-scanner.sh
